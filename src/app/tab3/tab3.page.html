@@ -1,0 +1,46 @@
+<ion-header *ngIf="reserva">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Reserva {{reserva.Id}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="reserva">
+  <ion-card>
+    <ion-item>
+      <ion-icon name="alarm-outline" style="margin-right: 10px;"></ion-icon>
+      <ion-label> Plazo del alquiler: <i> {{reserva.Inicio | date: 'dd.MM.yyyy'}} - {{reserva.Final | date: 'dd.MM.yyyy'}} </i> </ion-label>
+    </ion-item>
+  </ion-card>
+  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle style="margin: 10px;">
+        Coche
+      </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-icon name="car-sport-outline" style="margin-right: 10px;"></ion-icon>
+      <ion-label> Numero de licencia: {{reserva.Coches.NumLicencia}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label *ngIf="reserva.Coches.Categoria==1">  Categoria:  Estandar</ion-label>
+      <ion-label *ngIf="reserva.Coches.Categoria==2">  Categoria:  Lujo</ion-label>
+      <ion-label *ngIf="reserva.Coches.Categoria==3">  Categoria: Super Lujo</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label *ngIf="reserva.Coches.Estado==1"> Estado: Libre</ion-label>
+      <ion-label *ngIf="reserva.Coches.Estado==2"> Estado: Alquilado</ion-label>
+    </ion-item>
+  </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

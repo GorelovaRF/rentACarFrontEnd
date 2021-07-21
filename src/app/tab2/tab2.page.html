@@ -1,0 +1,54 @@
+<ion-header *ngIf="factura" >
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title>Factura {{factura.Id}}</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+ <ion-content  *ngIf="factura" >
+  <ion-card>
+    <ion-item>
+      <ion-label>Fecha: {{factura.Fecha | date: 'dd.MM.yyyy'}} </ion-label>
+    </ion-item>
+    <ion-item *ngIf="factura.EsPagada == true">
+      <ion-label> Estado: Pagada </ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="factura.EsPagada == false">
+      <ion-label> Estado: <b style="color: red;">No pagada</b> </ion-label>
+    </ion-item>
+    
+    <ion-item *ngIf="factura.EsAnulada == true">
+      <ion-label> Estado: <b style="color:blue;">Anulada</b> </ion-label>
+    </ion-item>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+        <ion-card-title style="margin: 10px;">
+          Lineas de factura
+        </ion-card-title>
+    </ion-card-header>
+   <ion-card-content> 
+      <ion-item *ngFor="let linea of factura.Lineas">
+        <ion-label>Numero de la linea: {{linea.NumLinea}}</ion-label>
+        <ion-button fill="outline" slot="end" (click)="mostrarDetalleLinea(linea.NumLinea)">Detalle</ion-button>
+      </ion-item>
+      <ion-item>
+       <i slot="end"> Total: {{factura.DameTotal}}$ </i>
+       
+      </ion-item>
+  </ion-card-content>
+  </ion-card>
+  
+
+
+</ion-content> 

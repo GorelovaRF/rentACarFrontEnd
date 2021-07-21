@@ -1,0 +1,8 @@
+{
+  "name": "RentACar",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,75 @@
+<ion-header [translucent]="true" *ngIf="cliente !== undefined" (cliente)="cliente">
+  <mat-toolbar color="accent" >
+    <h1>Bienvenido!</h1>
+  </mat-toolbar>
+</ion-header>
+  
+  <!-- <ion-toolbar color='primary'>
+    <ion-title>
+      Bienvenido!
+    </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content   *ngIf="cliente !== undefined" (cliente)="cliente">
+  
+  <mat-card style="margin: 10px;">
+    <mat-card-subtitle>
+      Perfil
+    </mat-card-subtitle>
+    <mat-card-title>
+      {{cliente.Nombre}}
+    </mat-card-title>
+    
+    <mat-card-content>
+      <table>
+        <tr>
+          <td>DNI  <b>{{cliente.DNI}}</b> </td>
+        </tr>
+        <tr>
+         <td>Direccion <b>{{cliente.Direccion}}</b> </td>
+        </tr>
+        <tr>
+         <td>Telefono <b>{{cliente.Telefono}}</b> </td>
+        </tr>
+
+      </table>
+
+    </mat-card-content>
+
+  </mat-card>
+  
+
+
+  <div>
+    <h5 style="margin: 20px;">Lista de las facturas: </h5>
+    <div *ngFor="let factura of cliente.Facturas">
+    <ion-card>
+      <ion-item>
+        <ion-icon name="receipt-outline" style="margin-right: 10px;"></ion-icon>
+        <ion-label>{{factura.Id}}</ion-label>
+        <button mat-raised-button color="accent" slot="end" (click)="mostrarDetalleFactura(factura.Id)">Detalle</button>
+      </ion-item>
+    </ion-card>
+    </div>
+  </div>
+
+  <div>
+    <h5 style="margin: 20px;">Lista de las reservas: </h5>
+    <div *ngFor="let reserva of reservas">
+    <ion-card>
+      <ion-item>
+        <ion-icon name="car-sport-outline" style="margin-right: 10px;"></ion-icon>
+        <ion-label>{{reserva.Id}}</ion-label>
+        <button mat-raised-button color="accent" slot="end" (click)="mostrarDetalleReserva(reserva.Id)">Detalle</button>
+        
+      </ion-item>
+    </ion-card>
+    </div>
+  </div> 
+
+
+
+  
+ 
+</ion-content>

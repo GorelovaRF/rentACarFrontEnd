@@ -1,0 +1,25 @@
+<ion-header *ngIf="linea">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Linea: {{linea.NumLinea}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="linea">
+  <ion-card>
+    <ion-item>
+      
+        <ion-icon name="cash-outline" style="margin-right: 10px;" ></ion-icon>
+       Precio:  {{linea.Precio}} $
+      
+    </ion-item>
+  </ion-card>
+  
+
+
+</ion-content>
